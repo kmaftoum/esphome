@@ -96,6 +96,7 @@ void Emerald::decode_emerald_packet_(const uint8_t *data, uint16_t length) {
           // even if new day, publish last measurement window before resetting
           this->daily_pulses_ += pulses_within_interval;
           float energy = this->daily_pulses_ / this->pulses_per_kwh_;
+          if(energy)
           this->daily_energy_sensor_->publish_state(energy);
 
 
